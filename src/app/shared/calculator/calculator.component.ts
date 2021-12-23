@@ -50,5 +50,11 @@ export class CalculatorComponent implements OnInit {
 
     // Interest Rate
     this.rateJuros = this.rate;
+
+    // Amount to be financed
+    this.amountFinanced = this.propertyValue - this.downPayment;
+
+    // Gross Monthly Household Income
+    this.familyIncome = ( this.firstInstalment * 100 ) / 30;
   }
 }
