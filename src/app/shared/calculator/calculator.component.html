@@ -2,13 +2,15 @@
   <img class="background-img" [src]="background">
   <div class="finance">
 
-    <form>
+    <form [formGroup]="formValues">
       <h1 class="form-title">Simulador de Financiamento de Imóvel</h1>
       <div class="container">
         <div class="row">
           <div class="col-12 form-group">
             <label for="propertyValue" class="form-text">VALOR DO IMÓVEL<br></label>
-            <input type="text" class="form-control input-size" id="propertyValue" required>
+            <input 
+              type="text" class="form-control input-size" id="propertyValue" prefix="R$ "  mask="separator.2" 
+              thousandSeparator="."  [(ngModel)]="propertyValue" required>
           </div>
         </div>
       </div>
@@ -16,7 +18,7 @@
         <div class="row">
           <div class="col-12 form-group">
             <label for="downPayment" class="form-text">ENTRADA<br></label>
-            <input type="text" class="form-control input-size" id="downPayment" required>
+            <input type="text" class="form-control input-size" id="downPayment" prefix="R$ " mask="separator.2" thousandSeparator="." [(ngModel)]="downPayment" required>
           </div>
         </div>
       </div>
@@ -24,11 +26,11 @@
         <div class="row">
           <div class="col-6 form-group">
             <label for="deadline" class="form-text">PRAZO (ANOS)<br></label>
-            <input type="number" class="form-control input-size-02" required>
+            <input type="number" class="form-control input-size-02" [(ngModel)]="deadline" required>
           </div>
           <div class="col-6 form-group">
             <label for="banco" class="form-text">TAXA DE JUROS<br></label>
-            <input  type="text" class="form-control input-size-02" required>
+            <input type="text" class="form-control input-size-02" mask="percent" suffix="%" [(ngModel)]="rate" required>
           </div>
         </div>
       </div>
@@ -37,14 +39,14 @@
       </div>
     </form>
 
-    <div class="result">
+    <div class="result" *ngIf="result">
       <div class="container">
         <div class="row">
           <div class="col-8 result-group">
             <span class="result-text">Taxa de Juros</span><br>
           </div>
           <div class="col-4 result-group">
-            <span class="result-text">% ao ano</span>
+            <span class="result-text">{{ rateJuros }}% ao ano</span>
           </div>
         </div>
       </div>
@@ -54,7 +56,7 @@
             <span class="result-text">Primeira Parcela</span><br>
           </div>
           <div class="col-4 result-group">
-            <span class="result-text"></span>
+            <span class="result-text">{{ firstInstalment  | currency: 'BRL' }}</span>
           </div>
         </div>
       </div>
@@ -64,7 +66,7 @@
             <span class="result-text">Última Parcela</span><br>
           </div>
           <div class="col-4 result-group">
-            <span class="result-text"></span>
+            <span class="result-text">{{ lastInstalment  | currency: 'BRL' }} </span>
           </div>
         </div>
       </div>
@@ -74,7 +76,7 @@
             <span class="result-text">Renda mensal familiar bruta</span><br>
           </div>
           <div class="col-4 result-group">
-            <span class="result-text"></span>
+            <span class="result-text">{{ familyIncome | currency: 'BRL' }}</span>
           </div>
         </div>
       </div>
@@ -84,7 +86,7 @@
             <span class="result-text-02">Valor a ser Financiado</span><br>
           </div>
           <div class="col-4 result-group">
-            <span class="result-text-02"></span>
+            <span class="result-text-02">{{ amountFinanced | currency: 'BRL' }}</span>
           </div>
         </div>
       </div>

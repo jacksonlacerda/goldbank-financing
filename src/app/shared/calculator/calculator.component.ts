@@ -11,6 +11,19 @@ export class CalculatorComponent implements OnInit {
   public result: boolean = false;
   public background: string = null;
 
+  // Input Fields
+  public propertyValue: number = null;
+  public downPayment: number = null;
+  public rate: number = null;
+  public deadline: number = null;
+
+  // Returned Values
+  public rateJuros: number = null;
+  public firstInstalment : number = null;
+  public lastInstalment : number = null;
+  public familyIncome: number = null;
+  public amountFinanced: number = null;
+
   constructor() { }
 
   ngOnInit(): void {
