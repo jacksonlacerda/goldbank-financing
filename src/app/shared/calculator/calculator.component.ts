@@ -54,6 +54,9 @@ export class CalculatorComponent implements OnInit {
     // Amount to be financed
     this.amountFinanced = this.propertyValue - this.downPayment;
 
+    // Last Installment
+    this.lastInstalment =  ( this.instalmentCalc * this.rateCalc ) + this.instalmentCalc;
+
     // Gross Monthly Household Income
     this.familyIncome = ( this.firstInstalment * 100 ) / 30;
   }
