@@ -17,6 +17,11 @@ export class CalculatorComponent implements OnInit {
   public rate: number = null;
   public deadline: number = null;
 
+  // Variables calc()
+  public rateCalc: number = null;
+  public deadlineCalc: number = null;
+  public instalmentCalc: number = null;
+
   // Returned Values
   public rateJuros: number = null;
   public firstInstalment : number = null;
@@ -37,5 +42,13 @@ export class CalculatorComponent implements OnInit {
     }if(window.innerWidth <= 1024){
       this.background = '../assets/img/home-small.jpg';
     }
+  }
+
+  public calc(){
+    // Interface
+    this.result = true;
+
+    // Interest Rate
+    this.rateJuros = this.rate;
   }
 }
