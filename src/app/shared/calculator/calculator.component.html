@@ -16,6 +16,7 @@
               mask="separator.2" 
               thousandSeparator="." 
               [(ngModel)]="propertyValue" 
+              (keyup)="validationDownPayment()" 
               formControlName="propertyValue" 
               [ngClass]="{'error': formValues.get('propertyValue')?.errors && (formValues.get('propertyValue')?.touched && formValues.get('propertyValue')?.dirty)}" 
             required>
@@ -39,15 +40,22 @@
               prefix="R$ " 
               mask="separator.2" 
               thousandSeparator="." 
-              [(ngModel)]="downPayment"  
+              [(ngModel)]="downPayment" 
+              (keyup)="validationDownPayment()" 
               formControlName="downPayment" 
-              [ngClass]="{'error': (formValues.get('downPayment')?.errors && (formValues.get('downPayment')?.touched && formValues.get('downPayment')?.dirty))" 
+              [ngClass]="{'error': (formValues.get('downPayment')?.errors && (formValues.get('downPayment')?.touched && formValues.get('downPayment')?.dirty)) || !validationMin || !validationMax}" 
             required>
             <span 
               class="field-error" 
               *ngIf="formValues.get('downPayment')?.errors && (formValues.get('downPayment')?.touched && formValues.get('downPayment')?.dirty)"
             >
               Favor digitar algum valor
+            </span>
+            <span class="field-error" *ngIf="!validationMin">
+              O valor mínimo de entrada é {{ valueMin | currency: 'BRL' }}
+            </span>
+            <span class="field-error" *ngIf="!validationMax">
+              O valor máximo de entrada é {{ valueMax | currency: 'BRL' }}
             </span>
           </div>
         </div>
@@ -92,7 +100,7 @@
         </div>
       </div>
       <div class="form-button">
-        <button class="bt-calc" (click)="calc()" [disabled]="(formValues.invalid)">CALCULAR</button>
+        <button class="bt-calc" (click)="calc()" [disabled]="(formValues.invalid) || (!validationMin) ||(!validationMax)">CALCULAR</button>
       </div>
     </form>
 

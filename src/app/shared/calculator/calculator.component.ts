@@ -26,6 +26,12 @@ export class CalculatorComponent implements OnInit {
   public rate: number = null;
   public deadline: number = null;
 
+  // Variables ValidationDownPayment()
+  public valueMin: number = null;
+  public valueMax: number = null;
+  public validationMin: boolean = true;
+  public validationMax: boolean = true;
+
   // Variables calc()
   public rateCalc: number = null;
   public deadlineCalc: number = null;
@@ -50,6 +56,27 @@ export class CalculatorComponent implements OnInit {
 
     }if(window.innerWidth <= 1024){
       this.background = '../assets/img/home-small.jpg';
+    }
+  }
+
+  public validationDownPayment(){
+    // Down Payment: 20% is the minimum value and 80% is the maximum value
+    this.valueMin = this.propertyValue * 0.2;
+    this.valueMax = this.propertyValue * 0.8;
+
+    if((this.downPayment >= this.valueMin) || (this.downPayment == null) || (this.downPayment == 0)){
+      this.validationMin = true;
+
+      if(this.downPayment <= this.valueMax){
+        this.validationMax = true;
+
+      }else{
+        this.validationMax = false;
+
+      }
+    }else{
+      this.validationMin = false;
+      
     }
   }
 
