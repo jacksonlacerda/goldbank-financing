@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-calculator',
@@ -6,6 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./calculator.component.scss']
 })
 export class CalculatorComponent implements OnInit {
+
+  // Validation
+  public formValues: FormGroup = this.formBuilder.group({
+    propertyValue: [ null, Validators.required ],
+    downPayment: [ null, Validators.required ],
+    deadline: [ null, [ Validators.required, Validators.max(35) ] ],
+    rate: [ null, [ Validators.required, Validators.max(20) ] ]
+  })
 
   // Interface
   public result: boolean = false;
@@ -29,7 +38,7 @@ export class CalculatorComponent implements OnInit {
   public familyIncome: number = null;
   public amountFinanced: number = null;
 
-  constructor() { }
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     // Insert the best image according to screen resolution size
@@ -66,4 +75,5 @@ export class CalculatorComponent implements OnInit {
     // Gross Monthly Household Income
     this.familyIncome = ( this.firstInstalment * 100 ) / 30;
   }
+
 }

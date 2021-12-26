@@ -9,8 +9,22 @@
           <div class="col-12 form-group">
             <label for="propertyValue" class="form-text">VALOR DO IMÓVEL<br></label>
             <input 
-              type="text" class="form-control input-size" id="propertyValue" prefix="R$ "  mask="separator.2" 
-              thousandSeparator="."  [(ngModel)]="propertyValue" required>
+              type="text" 
+              class="form-control input-size" 
+              id="propertyValue" 
+              prefix="R$ " 
+              mask="separator.2" 
+              thousandSeparator="." 
+              [(ngModel)]="propertyValue" 
+              formControlName="propertyValue" 
+              [ngClass]="{'error': formValues.get('propertyValue')?.errors && (formValues.get('propertyValue')?.touched && formValues.get('propertyValue')?.dirty)}" 
+            required>
+            <span 
+              class="field-error" 
+              *ngIf="formValues.get('propertyValue')?.errors && (formValues.get('propertyValue')?.touched && formValues.get('propertyValue')?.dirty)"
+            >
+              Favor digitar algum valor
+            </span>
           </div>
         </div>
       </div>
@@ -18,7 +32,23 @@
         <div class="row">
           <div class="col-12 form-group">
             <label for="downPayment" class="form-text">ENTRADA<br></label>
-            <input type="text" class="form-control input-size" id="downPayment" prefix="R$ " mask="separator.2" thousandSeparator="." [(ngModel)]="downPayment" required>
+            <input 
+              type="text" 
+              class="form-control input-size" 
+              id="downPayment" 
+              prefix="R$ " 
+              mask="separator.2" 
+              thousandSeparator="." 
+              [(ngModel)]="downPayment"  
+              formControlName="downPayment" 
+              [ngClass]="{'error': (formValues.get('downPayment')?.errors && (formValues.get('downPayment')?.touched && formValues.get('downPayment')?.dirty))" 
+            required>
+            <span 
+              class="field-error" 
+              *ngIf="formValues.get('downPayment')?.errors && (formValues.get('downPayment')?.touched && formValues.get('downPayment')?.dirty)"
+            >
+              Favor digitar algum valor
+            </span>
           </div>
         </div>
       </div>
@@ -26,16 +56,43 @@
         <div class="row">
           <div class="col-6 form-group">
             <label for="deadline" class="form-text">PRAZO (ANOS)<br></label>
-            <input type="number" class="form-control input-size-02" [(ngModel)]="deadline" required>
+            <input 
+              type="number" 
+              class="form-control input-size-02" 
+              [(ngModel)]="deadline" 
+              formControlName="deadline" 
+              [ngClass]="{'error': formValues.get('deadline')?.errors && (formValues.get('deadline')?.touched && formValues.get('deadline')?.dirty)}" 
+              max="35" 
+            required>
+            <span 
+              class="field-error" 
+              *ngIf="formValues.get('deadline')?.errors && (formValues.get('deadline')?.touched && formValues.get('deadline')?.dirty)"
+            >
+              O prazo máximo deve ter {{ formValues.get('deadline')?.errors?.max.max }} anos e você digitou {{ formValues.get('deadline')?.errors?.max.actual }} anos
+            </span>
           </div>
           <div class="col-6 form-group">
             <label for="banco" class="form-text">TAXA DE JUROS<br></label>
-            <input type="text" class="form-control input-size-02" mask="percent" suffix="%" [(ngModel)]="rate" required>
+            <input 
+              type="text" 
+              class="form-control input-size-02" 
+              mask="percent" 
+              suffix="%" 
+              [(ngModel)]="rate" 
+              formControlName="rate" 
+              [ngClass]="{'error': formValues.get('rate')?.errors && (formValues.get('rate')?.touched && formValues.get('rate')?.dirty)}" 
+            required>
+            <span 
+              class="field-error" 
+              *ngIf="formValues.get('rate')?.errors && (formValues.get('rate')?.touched && formValues.get('rate')?.dirty)"
+            >
+              A taxa máxima deve ter {{ formValues.get('rate')?.errors?.max.max }}% e você digitou {{ formValues.get('rate')?.errors?.max.actual }}%
+            </span>
           </div>
         </div>
       </div>
       <div class="form-button">
-        <button class="bt-calc" (click)="calc()">CALCULAR</button>
+        <button class="bt-calc" (click)="calc()" [disabled]="(formValues.invalid)">CALCULAR</button>
       </div>
     </form>
 
