@@ -49,13 +49,13 @@ export class CalculatorComponent implements OnInit {
   ngOnInit(): void {
     // Insert the best image according to screen resolution size
     if(window.innerWidth > 1900){
-      this.background = '../assets/img/home-largue.jpg';
+      this.background = 'assets/img/home-largue.jpg';
 
     }if((window.innerWidth <= 1900) && (window.innerWidth >= 1025)){
-      this.background = '../assets/img/home-medium.jpg';
+      this.background = 'assets/img/home-medium.jpg';
 
     }if(window.innerWidth <= 1024){
-      this.background = '../assets/img/home-small.jpg';
+      this.background = 'assets/img/home-small.jpg';
     }
   }
 
