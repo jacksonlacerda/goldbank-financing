@@ -2,14 +2,10 @@
   <img alt="goldbank financing" src=".github/logo.png" width="160px">
 </p>
 
-<h1 align="center">
-  Goldbank Financing
-</h1>
-
 <br>
 
 <p align="center">
-  <img alt="goldbank financing" src=".github/goldbank-financing.png" width="90%">
+  <img alt="goldbank financing" src=".github/goldbank-financing.PNG" width="90%">
 </p>
 
 ## Deploy do Projeto
@@ -19,6 +15,8 @@ Esta aplicação está em produção no link abaixo:
 <a align="center" href="https://jacksonlacerda.github.io/goldbank-financing/">
   Goldbank Financing
 </a>
+
+<br>
 
 OBS: Este projeto foi prototipado no figma e projetado utilizando o angular baseado em minhas próprias ideias com o objetivo de servir de aprendizado e para demonstrar alguns dos meus conhecimentos sobre as tecnologias utilizadas, ou seja, ele não é uma reprodução de cursos ou bootcamps.
 
