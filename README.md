@@ -12,11 +12,11 @@
 
 Esta aplicação está em produção no link abaixo:
 
-<a align="center" href="https://jacksonlacerda.github.io/goldbank-financing/">
-  Goldbank Financing
-</a>
-
-<br>
+<p align="left">
+  <a href="https://jacksonlacerda.github.io/goldbank-financing/">
+    Goldbank Financing
+  </a>
+</p>
 
 OBS: Este projeto foi prototipado no figma e projetado utilizando o angular baseado em minhas próprias ideias com o objetivo de servir de aprendizado e para demonstrar alguns dos meus conhecimentos sobre as tecnologias utilizadas, ou seja, ele não é uma reprodução de cursos ou bootcamps.
 
